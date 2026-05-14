@@ -1,0 +1,383 @@
+:root {
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: #f1faee;
+  background: #f1faee;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.observer-shell {
+  min-height: 100vh;
+  background: #f1faee;
+  color: #212529;
+  position: relative;
+}
+
+.instrument-header {
+  height: 104px;
+  background: #212529;
+  border-bottom: 1px solid rgba(168, 218, 220, 0.28);
+  color: #f1faee;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 40px;
+  box-shadow: 0 12px 40px rgba(33, 37, 41, 0.18);
+}
+
+.header-copy {
+  grid-column: 2;
+  text-align: center;
+}
+
+.header-copy h1 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+}
+
+.header-copy p {
+  margin: 8px 0 0;
+  color: #a8dadc;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+
+.telemetry {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.telemetry div {
+  text-align: right;
+  display: grid;
+  gap: 3px;
+}
+
+.telemetry span {
+  color: rgba(241, 250, 238, 0.62);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+}
+
+.telemetry strong {
+  color: #a8dadc;
+  font-size: 1.55rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.status-light {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #6c757d;
+  display: block;
+}
+
+.status-light.online {
+  background: #54f28b;
+  box-shadow: 0 0 20px rgba(84, 242, 139, 0.82);
+}
+
+.icon-button {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(168, 218, 220, 0.45);
+  border-radius: 8px;
+  background: rgba(168, 218, 220, 0.08);
+  color: #a8dadc;
+  display: inline-grid;
+  place-items: center;
+}
+
+.observer-grid {
+  height: calc(100vh - 104px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.mesh-stage {
+  min-width: 0;
+  min-height: 0;
+  background:
+    linear-gradient(180deg, rgba(168, 218, 220, 0.1), rgba(241, 250, 238, 0)),
+    #f1faee;
+  border-right: 1px solid rgba(33, 37, 41, 0.18);
+}
+
+.mesh-stage svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.link {
+  stroke: #a8dadc;
+  stroke-width: 2.2;
+  stroke-opacity: 0.62;
+}
+
+.link.gossip-flash {
+  stroke: #e9c46a;
+  stroke-width: 5;
+  stroke-opacity: 0.92;
+  animation: edgeFlash 0.8s ease-out forwards;
+}
+
+.node {
+  stroke: #f1faee;
+  stroke-width: 3;
+  transition: fill 180ms ease, r 180ms ease;
+}
+
+.node.sensitized {
+  stroke: #a8dadc;
+  stroke-width: 4;
+}
+
+.nodes text {
+  fill: #f1faee;
+  font-weight: 600;
+  font-size: 14px;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.node-pulse {
+  fill: none;
+  stroke: #e63946;
+  stroke-width: 2;
+  opacity: 0;
+  animation: pulse 1.4s ease-out infinite;
+}
+
+.danger-ring {
+  fill: none;
+  stroke: #e63946;
+  stroke-width: 3;
+  opacity: 0.8;
+  animation: dangerRing 1s ease-out forwards;
+}
+
+.consensus-burst {
+  fill: rgba(230, 57, 70, 0.1);
+  stroke: #e63946;
+  stroke-width: 4;
+  animation: consensusBurst 0.9s ease-out forwards;
+}
+
+.analysis-panel {
+  min-width: 0;
+  overflow: auto;
+  background: #212529;
+  color: #f1faee;
+  padding: 26px 28px 34px;
+}
+
+.analysis-panel h2 {
+  margin: 0;
+  font-size: 1.58rem;
+  font-weight: 600;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(168, 218, 220, 0.34);
+}
+
+.analysis-panel section {
+  margin-top: 28px;
+}
+
+.analysis-panel h3 {
+  color: #a8dadc;
+  margin: 0 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.score-list {
+  display: grid;
+  gap: 11px;
+}
+
+.score-list div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-list span {
+  color: rgba(241, 250, 238, 0.84);
+}
+
+.score-list strong {
+  color: #f1faee;
+  font-weight: 600;
+}
+
+.score-list .hot strong {
+  color: #e63946;
+}
+
+.mono {
+  font-family: "JetBrains Mono", "Cascadia Code", monospace;
+}
+
+.mono strong {
+  color: #e9c46a;
+}
+
+.muted {
+  color: rgba(241, 250, 238, 0.56);
+  margin: 0;
+}
+
+.event-log {
+  display: grid;
+  gap: 10px;
+}
+
+.event-log article {
+  border-left: 3px solid #a8dadc;
+  padding: 2px 0 3px 10px;
+}
+
+.event-log article.warning {
+  border-color: #e9c46a;
+}
+
+.event-log article.critical {
+  border-color: #e63946;
+}
+
+.event-log article.success {
+  border-color: #54f28b;
+}
+
+.event-log span {
+  display: block;
+  font-size: 0.72rem;
+  color: #a8dadc;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.event-log p {
+  margin: 4px 0 0;
+  color: rgba(241, 250, 238, 0.82);
+  line-height: 1.35;
+  font-size: 0.88rem;
+}
+
+.apt-banner {
+  position: fixed;
+  z-index: 20;
+  inset: 0 0 auto 0;
+  height: 74px;
+  background: #e63946;
+  color: #f1faee;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  animation: bannerDrop 360ms ease-out;
+  box-shadow: 0 20px 50px rgba(230, 57, 70, 0.36);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes dangerRing {
+  from {
+    opacity: 0.84;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.9);
+  }
+}
+
+@keyframes consensusBurst {
+  from {
+    opacity: 0.95;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+@keyframes edgeFlash {
+  to {
+    stroke-width: 2.2;
+    stroke-opacity: 0.62;
+  }
+}
+
+@keyframes bannerDrop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .instrument-header {
+    grid-template-columns: 1fr;
+    height: 142px;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+
+  .header-copy,
+  .telemetry {
+    grid-column: 1;
+  }
+
+  .telemetry {
+    justify-self: center;
+  }
+
+  .observer-grid {
+    height: calc(100vh - 142px);
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(360px, 58vh) minmax(260px, 1fr);
+  }
+
+  .analysis-panel {
+    border-top: 1px solid rgba(168, 218, 220, 0.28);
+  }
+}

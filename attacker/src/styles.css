@@ -1,0 +1,122 @@
+:root {
+  font-family: "JetBrains Mono", "Cascadia Code", monospace;
+  color: #f1faee;
+  background: #080713;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #080713;
+  overflow: hidden;
+}
+
+.attack-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(230, 57, 70, 0.12), rgba(8, 7, 19, 0) 90px),
+    #080713;
+  color: #f1faee;
+  display: grid;
+  grid-template-rows: 74px minmax(0, 1fr);
+}
+
+.attack-header {
+  border-bottom: 1px solid rgba(207, 166, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 34px;
+  background: rgba(8, 7, 19, 0.88);
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.title-group svg {
+  color: #a8dadc;
+  flex: 0 0 auto;
+}
+
+.title-group h1 {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.connection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e63946;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.connection span {
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 18px currentColor;
+}
+
+.connection.online {
+  color: #54f28b;
+}
+
+.terminal-frame {
+  margin: 24px;
+  border: 1px solid rgba(207, 166, 255, 0.4);
+  border-radius: 8px;
+  min-height: 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(168, 218, 220, 0.05), 0 24px 80px rgba(0, 0, 0, 0.35);
+  background: #080713;
+}
+
+.terminal-host {
+  width: 100%;
+  height: 100%;
+  padding: 26px;
+}
+
+.xterm {
+  height: 100%;
+}
+
+.xterm-viewport {
+  scrollbar-color: #423268 #080713;
+}
+
+@media (max-width: 760px) {
+  .attack-header {
+    padding: 0 18px;
+  }
+
+  .title-group h1 {
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .terminal-frame {
+    margin: 14px;
+  }
+
+  .terminal-host {
+    padding: 16px;
+  }
+}
