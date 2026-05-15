@@ -1,10 +1,12 @@
 # SentinelMesh
+![Demo](assets/demo.gif)
 
+[Watch full demo →](https://drive.google.com/file/d/1R0nWTsdCbE7vq-hLzeR1GJmS5Up9Uboy/view?usp=sharing)
 > A bio-inspired anomaly detection system modeled on Artificial Immune Systems theory — 
 > distributed suspicion propagation, gossip-based consensus, and immunological memory 
 > across a mesh network.
 
-![Demo](assets/demo.gif)
+
 
 ---
 
